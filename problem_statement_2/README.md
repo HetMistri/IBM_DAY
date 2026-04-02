@@ -1,59 +1,47 @@
-# Problem Statement 2 - Implementation Explanation
+# Problem 2 - The Ciphered Path
 
-Both programs process the encoded string:
+Decode a string by shifting ASCII values and convert letters into movement instructions.
 
-`ngr%htqqfgtwfyj%nhy`
+## Input
 
-They decode each character by shifting it 5 positions backward in ASCII, then map decoded letters to movement directions.
+- Encoded text: ngr%htqqfgtwfyj%nhy
 
-## Core Logic Used in Both Implementations
+## Rules
 
-1. Take each character from the encoded text.
-2. Decode using: `decoded = original - 5` (ASCII shift).
-3. If decoded character is an alphabet letter:
-	- Convert it to uppercase.
-	- Map it to a direction by alphabet range:
-	  - `A-F` -> `UP`
-	  - `G-L` -> `DOWN`
-	  - `M-R` -> `LEFT`
-	  - `S-Z` -> `RIGHT`
+1. Decode each character using ASCII shift: value - 5.
+2. For alphabetic decoded letters, map to direction:
+   - A to F -> UP
+   - G to L -> DOWN
+   - M to R -> LEFT
+   - S to Z -> RIGHT
+3. Ignore non-alphabet characters for movement.
 
-Decoded message from the input is:
+## Approach Used In Code
 
-`IBM COLLABORATE ICT`
+Both Python and C do this in one pass:
 
-## Python (`main.py`)
+1. Read each encoded character.
+2. Decode by subtracting 5.
+3. Build the decoded message.
+4. If decoded char is alphabetic, map it to a direction.
+5. Print movement sequence and message.
 
-### Flow
+## Decoded Message
 
-1. Iterates over each character in `encoded`.
-2. Decodes with `chr(ord(ch) - 5)`.
-3. For alphabetic decoded characters:
-	- Converts to uppercase.
-	- Appends matching direction string into `result` list.
-4. Appends every decoded character (including spaces) into `message`.
-5. Prints:
-	- full decoded message
-	- space-separated direction sequence
+- ibm collaborate ict
 
-### Output Behavior
+## Direction Sequence
 
-- First line: decoded text.
-- Second line: directions.
+- DOWN UP LEFT UP LEFT DOWN DOWN UP UP LEFT LEFT UP RIGHT UP DOWN UP RIGHT
 
-## C (`main.c`)
+## Implementation Notes
 
-### Flow
+Python (main.py):
 
-1. Iterates through `encoded` using an index loop.
-2. Decodes each char with `decoded = encoded[i] - 5`.
-3. Add decoded to message array.
-4. If `decoded` is alphabetic (`isalpha`):
-	- Converts to uppercase (`toupper`).
-	- Prints direction based on the same range mapping.
-5. Print decoded message
+- Builds a list of directions and a message string.
+- Prints message first, then directions.
 
-### Output Behavior
+C (main.c):
 
-- Prints direction sequence directly to stdout.
-- Prints the decoded message text.
+- Decodes in a loop using char arithmetic.
+- Prints directions while processing, then prints the message.
