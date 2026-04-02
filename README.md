@@ -42,4 +42,4 @@ IBM_DAY/
 ## Notes
 
 - Each problem folder contains a separate README with step-by-step logic.
-- Solutions are intentionally beginner-friendly and easy to follow.
+- Refrence those README for understanding the actual meaning behind the problem statements
